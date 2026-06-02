@@ -100,18 +100,21 @@ Mời bạn chọn chức năng (1-5): """)
                         print("Giờ ra phải là số nguyên!")
                         continue
                     end_hour = int(end_hour)
+                    if end_hour < 0 or end_hour > 24:
+                        print("Giờ ra phải trong khoảng 0-24h!")
+                        continue
                     if end_hour < car['start_hour']:
-                        print("[Lỗi]: Giờ ra phải sau hoặc bằng giờ vào!")
+                        print("Giờ ra phải sau hoặc bằng giờ vào!")
                         continue
                     break
                 total_hour = end_hour - car['start_hour']
-                if car['type_car'] == "1":
+                if car['type_car'] == "Xe máy":
                     fee = total_hour * 5000
                 else:
                     fee = total_hour * 10000
                 print(f"Tổng phí phải trả: {fee} VNĐ")
                 deleted_car = parking_list.pop(i)
-                print(f"[Thành công]: Đã xóa xe ID {deleted_car['id']} thành công!")
+                print(f"Đã xóa xe ID {deleted_car['id']} thành công!")
                 break
         case "5":
             print("Đã thoát chương trình")
